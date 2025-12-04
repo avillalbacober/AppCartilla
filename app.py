@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, send_file
 import pandas as pd
 import tempfile
-from weasyprint import HTML
+import pdfkit import HTML
 
 import gspread
 from google.oauth2.service_account import Credentials
@@ -68,4 +68,5 @@ def generar():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
 
