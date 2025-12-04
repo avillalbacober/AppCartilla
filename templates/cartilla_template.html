@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { font-family: Arial; padding: 30px; color: #333; }
+h1 { text-align: center; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { padding: 10px; border-bottom: 1px solid #ccc; }
+th { background: #f4f4f4; }
+</style>
+</head>
+<body>
+
+<h1>Cartilla de Prestadores</h1>
+<h3>{{ cartera }} • Plan {{ plan }} • Zona {{ zona }}</h3>
+
+<table>
+<tr>
+    <th>Prestador</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
+    <th>Barrio</th>
+    <th>Especialidad</th>
+</tr>
+
+{% for p in prestadores %}
+<tr>
+    <td>{{ p["pre_nom"] }}</td>
+    <td>{{ p["direccion"] }}</td>
+    <td>{{ p["telefono"] }}</td>
+    <td>{{ p["barrio"] }}</td>
+    <td>{{ p["especialidad"] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>

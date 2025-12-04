@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cartilla de Prestadores</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Descargar Cartilla de Prestadores</h1>
+
+<form action="/generar" method="POST">
+
+    <label>Cartera:</label>
+    <select name="cartera" required>
+        <option>Bristol</option>
+        <option>Cober</option>
+        <option>Medicals</option>
+    </select>
+
+    <label>Plan:</label>
+    <input type="text" name="plan" placeholder="Ej: BM300" required>
+
+    <label>Zona:</label>
+    <input type="text" name="zona" placeholder="Ej: GBA NORTE" required>
+
+    <button type="submit">Descargar PDF</button>
+</form>
+
+</body>
+</html>
