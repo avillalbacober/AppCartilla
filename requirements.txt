@@ -1,6 +1,9 @@
 Flask
 pandas
-WeasyPrint
-gunicorn
 gspread
-oauth2client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+pdfkit
+wkhtmltopdf-binary
+gunicorn
