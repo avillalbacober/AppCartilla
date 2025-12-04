@@ -9,11 +9,9 @@ from google.oauth2.service_account import Credentials
 app = Flask(__name__)
 
 # --- CONFIG GOOGLE SHEETS ---
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
-CREDS = Credentials.from_service_account_file(
-    "creds.json", scopes=SCOPES
-)
-client = gspread.authorize(CREDS)
+creds_info = json.loads(os.environ["GOOGLE_CREDS_JSON"])
+creds = Credentials.from_service_account_info(creds_info)
+
 
 # IDs de tus Sheets
 SHEETS = {
@@ -60,3 +58,4 @@ def generar():
 
 if __name__ == "__main__":
     app.run()
+
