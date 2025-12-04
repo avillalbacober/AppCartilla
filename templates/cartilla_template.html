@@ -21,7 +21,7 @@ th { background: #f4f4f4; }
     <th>Dirección</th>
     <th>Teléfono</th>
     <th>Barrio</th>
-    <th>Especialidad</th>
+    <th>Tipo</th>
 </tr>
 
 {% for p in prestadores %}
@@ -30,10 +30,11 @@ th { background: #f4f4f4; }
     <td>{{ p["direccion"] }}</td>
     <td>{{ p["telefono"] }}</td>
     <td>{{ p["barrio"] }}</td>
-    <td>{{ p["especialidad"] }}</td>
+    <td>{{ p["tp_nom"] }}</td>
 </tr>
 {% endfor %}
 </table>
 
 </body>
 </html>
+
