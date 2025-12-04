@@ -1,18 +1,15 @@
 from flask import Flask, render_template, request, send_file
 import pandas as pd
 import tempfile
-import pdfkit import HTML
-
+import pdfkit
 import gspread
 from google.oauth2.service_account import Credentials
-
 import os
 import json
 
 app = Flask(__name__)
 
 # --- CONFIG GOOGLE SHEETS ---
-
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 # Cargar credenciales desde variable de entorno
@@ -39,19 +36,19 @@ def generar():
     plan = request.form["plan"]
     zona = request.form["zona"]
 
-    # Abrir Google Sheet correspondiente
+    # Leer hoja Google Sheets
     sheet = client.open_by_key(SHEETS[cartera]).worksheet("App")
     data = sheet.get_all_records()
     df = pd.DataFrame(data)
 
-    # Filtrado de cartilla
+    # Filtrar
     df_filtrado = df[
         (df[plan] == "SI") &
         (df["loc_nombre"] == zona) &
         (df["Estado"] == "Alta")
     ]
 
-    # Renderizar HTML
+    # Crear HTML desde template
     html = render_template(
         "cartilla_template.html",
         cartera=cartera,
@@ -62,11 +59,9 @@ def generar():
 
     # PDF temporal
     tmp_pdf = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
-    HTML(string=html).write_pdf(tmp_pdf.name)
+    pdfkit.from_string(html, tmp_pdf.name)
 
     return send_file(tmp_pdf.name, download_name="cartilla.pdf")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
-
-
