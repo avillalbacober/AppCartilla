@@ -2,3 +2,5 @@ Flask
 pandas
 WeasyPrint
 gunicorn
+gspread
+oauth2client
