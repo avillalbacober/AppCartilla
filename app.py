@@ -40,7 +40,7 @@ def generar():
     zona = request.form["zona"]
 
     # Abrir Google Sheet correspondiente
-    sheet = client.open_by_key(SHEETS[cartera]).sheet1
+    sheet = client.open_by_key(SHEETS[cartera]).worksheet("App")
     data = sheet.get_all_records()
     df = pd.DataFrame(data)
 
@@ -68,3 +68,4 @@ def generar():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
